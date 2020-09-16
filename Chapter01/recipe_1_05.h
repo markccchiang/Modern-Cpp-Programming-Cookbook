@@ -70,7 +70,7 @@ namespace recipe_1_05
       }
 
       {
-         struct alignas(4) foo
+         struct alignas(8) foo
          {
             alignas(2) char a;
             alignas(8) int  b;
