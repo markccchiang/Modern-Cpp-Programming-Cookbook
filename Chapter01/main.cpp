@@ -13,22 +13,21 @@
 #include "recipe_1_12.h"
 #include "recipe_1_13.h"
 
-int main()
-{
-   recipe_1_01::execute();
-   recipe_1_02::execute();
-   recipe_1_03::execute();
-   recipe_1_04::execute();
-   recipe_1_05::execute();
-   recipe_1_06::execute();
-   recipe_1_07::execute();
-   recipe_1_08::execute();
-   recipe_1_09::execute();
-   recipe_1_10::execute();
-   recipe_1_11::file1_run();
-   recipe_1_11::file2_run();
-   recipe_1_12::client::execute();
-   recipe_1_13::execute();
+int main() {
+    recipe_1_01::execute();
+    recipe_1_02::execute();
+    recipe_1_03::execute();
+    recipe_1_04::execute();
+    recipe_1_05::execute();
+    recipe_1_06::execute();
+    recipe_1_07::execute();
+    recipe_1_08::execute();
+    recipe_1_09::execute();
+    recipe_1_10::execute();
+    recipe_1_11::file1_run();
+    recipe_1_11::file2_run();
+    recipe_1_12::client::execute();
+    recipe_1_13::execute();
 
-   return 0;
+    return 0;
 }
