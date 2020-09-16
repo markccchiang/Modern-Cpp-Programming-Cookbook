@@ -92,8 +92,8 @@ namespace recipe_3_09
          auto a = std::invoke(l, 1, 2);     // a = 3
       }
 
-      {
-         auto a = apply(add, std::make_tuple(1, 2));
-      }
+      //{
+      //   auto a = apply(add, std::make_tuple(1, 2));
+      //}
    }
 }

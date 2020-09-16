@@ -12,11 +12,11 @@ namespace recipe_3_06
       return funclib::compose(std::forward<F>(f), std::forward<G>(g));
    }
 
-   template <typename F, typename... R>
-   auto operator*(F&& f, R&&... r)
-   {
-      return funclib::operator*(std::forward<F>(f), r...);
-   }
+   //template <typename F, typename... R>
+   //auto operator*(F&& f, R&&... r)
+   //{
+   //   return funclib::operator*(std::forward<F>(f), r...);
+   //}
 
    void execute()
    {
