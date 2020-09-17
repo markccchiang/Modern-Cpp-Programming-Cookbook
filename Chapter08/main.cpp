@@ -9,18 +9,17 @@
 #include "recipe_8_09.h"
 #include "recipe_8_10.h"
 
-int main()
-{
-   recipe_8_01::execute();
-   recipe_8_02::execute();
-   recipe_8_03::execute();
-   recipe_8_04::execute();
-   recipe_8_05::execute();
-   recipe_8_06::execute();
-   recipe_8_07::execute();
-   recipe_8_08::execute();
-   recipe_8_09::execute();
-   recipe_8_10::execute();
+int main() {
+    recipe_8_01::execute();
+    recipe_8_02::execute();
+    recipe_8_03::execute();
+    recipe_8_04::execute();
+    recipe_8_05::execute();
+    recipe_8_06::execute();
+    recipe_8_07::execute();
+    recipe_8_08::execute();
+    recipe_8_09::execute();
+    recipe_8_10::execute();
 
-   return 0;
+    return 0;
 }
