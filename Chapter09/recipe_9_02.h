@@ -23,7 +23,7 @@ namespace recipe_9_02
    template <typename F, typename A>
    auto func(F&& f, A&& arg) noexcept
    {
-      static_assert(!noexcept(f(arg)), "F is throwing!");
+      static_assert(noexcept(f(arg)), "F is throwing!");
       return f(arg);
    }
 
