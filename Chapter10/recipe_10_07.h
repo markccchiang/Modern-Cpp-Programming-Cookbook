@@ -1,55 +1,51 @@
 #pragma once
 
-namespace recipe_10_07
-{
-   class Singleton
-   {
-   private:
-      Singleton() {}
-   public:
-      Singleton(Singleton const &) = delete;
-      Singleton& operator=(Singleton const&) = delete;
+namespace recipe_10_07 {
+class Singleton {
+private:
+    Singleton() {}
 
-      static Singleton& instance()
-      {
-         static Singleton single;
-         return single;
-      }
-   };
+public:
+    Singleton(Singleton const&) = delete;
+    Singleton& operator=(Singleton const&) = delete;
 
-   template <class T>
-   class SingletonBase
-   {
-   protected:
-      SingletonBase() {}
-   public:
-      SingletonBase(SingletonBase const &) = delete;
-      SingletonBase& operator=(SingletonBase const&) = delete;
+    static Singleton& instance() {
+        static Singleton single;
+        return single;
+    }
+};
 
-      static T& instance()
-      {
-         static T single;
-         return single;
-      }
-   };
+template <class T>
+class SingletonBase {
+protected:
+    SingletonBase() {}
 
-   class Single : public SingletonBase<Single>
-   {
-      Single() {}
-      friend class SingletonBase<Single>;
-   public:
-      void demo() { std::cout << "demo" << std::endl; }
-   };
+public:
+    SingletonBase(SingletonBase const&) = delete;
+    SingletonBase& operator=(SingletonBase const&) = delete;
 
-   void execute()
-   {
-      {
-         auto& s = Singleton::instance();
-      }
+    static T& instance() {
+        static T single;
+        return single;
+    }
+};
 
-      {
-         auto& s = Single::instance();
-         s.demo();
-      }
-   }
+class Single : public SingletonBase<Single> {
+    Single() {}
+    friend class SingletonBase<Single>;
+
+public:
+    void demo() {
+        std::cout << "demo" << std::endl;
+    }
+};
+
+void execute() {
+    { auto& s = Singleton::instance(); }
+
+    {
+        auto& s = Single::instance();
+        s.demo();
+    }
 }
+} // namespace recipe_10_07

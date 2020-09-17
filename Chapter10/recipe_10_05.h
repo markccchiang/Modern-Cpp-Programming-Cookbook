@@ -2,126 +2,114 @@
 
 #include <iostream>
 
-namespace recipe_10_05
-{
-   namespace oldversion
-   {
-      class Client
-      {
-         int data_1;
-         int data_2;
+namespace recipe_10_05 {
+namespace oldversion {
+class Client {
+    int data_1;
+    int data_2;
 
-         void action1() {}
-         void action2() {}
+    void action1() {}
+    void action2() {}
 
-         friend class Friend;
-      public:
-         // public interface
-      };
+    friend class Friend;
 
-      class Friend
-      {
-      public:
-         void access_client_data(Client& c)
-         {
-            c.action1();
-            c.action2();
-            auto d1 = c.data_1;
-            auto d2 = c.data_1;
-         }
-      };
-   }
+public:
+    // public interface
+};
 
-   class Client
-   {
-      int data_1;
-      int data_2;
+class Friend {
+public:
+    void access_client_data(Client& c) {
+        c.action1();
+        c.action2();
+        auto d1 = c.data_1;
+        auto d2 = c.data_1;
+    }
+};
+} // namespace oldversion
 
-      void action1() {}
-      void action2() {}
+class Client {
+    int data_1;
+    int data_2;
 
-      friend class Attorney;
-   public:
-      // public interface
-   };
+    void action1() {}
+    void action2() {}
 
-   class Attorney
-   {
-      static inline void run_action1(Client& c)
-      {
-         c.action1();
-      }
+    friend class Attorney;
 
-      static inline int get_data1(Client& c)
-      {
-         return c.data_1;
-      }
+public:
+    // public interface
+};
 
-      friend class Friend;
-   };
+class Attorney {
+    static inline void run_action1(Client& c) {
+        c.action1();
+    }
 
-   class Friend
-   {
-   public:
-      void access_client_data(Client& c)
-      {
-         Attorney::run_action1(c);
-         auto d1 = Attorney::get_data1(c);
-      }
-   };
+    static inline int get_data1(Client& c) {
+        return c.data_1;
+    }
 
-   class B
-   {
-      virtual void execute() { std::cout << "base" << std::endl; }
+    friend class Friend;
+};
 
-      friend class BAttorney;
-   };
+class Friend {
+public:
+    void access_client_data(Client& c) {
+        Attorney::run_action1(c);
+        auto d1 = Attorney::get_data1(c);
+    }
+};
 
-   class D : public B
-   {
-      virtual void execute() override { std::cout << "derived" << std::endl; }
-   };
+class B {
+    virtual void execute() {
+        std::cout << "base" << std::endl;
+    }
 
-   class BAttorney
-   {
-      static inline void execute(B& b)
-      {
-         b.execute();
-      }
+    friend class BAttorney;
+};
 
-      friend class F;
-   };
+class D : public B {
+    virtual void execute() override {
+        std::cout << "derived" << std::endl;
+    }
+};
 
-   class F
-   {
-   public:
-      void run()
-      {
-         B b;
-         BAttorney::execute(b); // prints 'base'
+class BAttorney {
+    static inline void execute(B& b) {
+        b.execute();
+    }
 
-         D d;
-         BAttorney::execute(d); // prints 'derived'
-      }
-   };
+    friend class F;
+};
 
-   void execute()
-   {
-      {
-         oldversion::Client c;
-         oldversion::Friend f;
-         f.access_client_data(c);
-      }
+class F {
+public:
+    void run() {
+        B b;
+        BAttorney::execute(b); // prints 'base'
 
-      {
-         Client c;
-         Friend f;
-         f.access_client_data(c);
-      }
+        D d;
+        BAttorney::execute(d); // prints 'derived'
+    }
+};
 
-      {
-         F f;
-         f.run();
-      }
-   }
+void execute() {
+    {
+        oldversion::Client c;
+        oldversion::Friend f;
+        f.access_client_data(c);
+    }
+
+    {
+        Client c;
+        Friend f;
+        f.access_client_data(c);
+    }
+
+    {
+        F f;
+        f.run();
+    }
 }
+} // namespace recipe_10_05

@@ -1,92 +1,84 @@
 #pragma once
 
+#include <iomanip>
 #include <iostream>
 #include <string>
 #include <string_view>
-#include <iomanip>
 
 #include "control.h"
 
-namespace recipe_10_02
-{
-   class oldcontrol
-   {
-      std::string text;
-      int width = 0;
-      int height = 0;
-      bool visible = true;
+namespace recipe_10_02 {
+class oldcontrol {
+    std::string text;
+    int width = 0;
+    int height = 0;
+    bool visible = true;
 
-      void draw()
-      {
-         std::cout 
-            << "control " << std::endl
-            << "  visible: " << std::boolalpha << visible << std::noboolalpha << std::endl
-            << "  size: " << width << ", " << height << std::endl
-            << "  text: " << text << std::endl;
-      }
-   public:
-      void set_text(std::string_view t)
-      {
-         text = t.data();
-         draw();
-      }
+    void draw() {
+        std::cout << "control " << std::endl
+                  << "  visible: " << std::boolalpha << visible << std::noboolalpha << std::endl
+                  << "  size: " << width << ", " << height << std::endl
+                  << "  text: " << text << std::endl;
+    }
 
-      void resize(int const w, int const h)
-      {
-         width = w;
-         height = h;
-         draw();
-      }
+public:
+    void set_text(std::string_view t) {
+        text = t.data();
+        draw();
+    }
 
-      void show() 
-      { 
-         visible = true; 
-         draw();
-      }
+    void resize(int const w, int const h) {
+        width = w;
+        height = h;
+        draw();
+    }
 
-      void hide() 
-      { 
-         visible = false; 
-         draw();
-      }
-   };
+    void show() {
+        visible = true;
+        draw();
+    }
 
-   void execute()
-   {
-      {
-         oldcontrol c;
-         c.resize(100, 20);
-         c.set_text("sample");
-         c.hide();
+    void hide() {
+        visible = false;
+        draw();
+    }
+};
 
-         oldcontrol c2 = c;
-         c2.show();
+void execute() {
+    {
+        oldcontrol c;
+        c.resize(100, 20);
+        c.set_text("sample");
+        c.hide();
 
-         oldcontrol c3 = std::move(c2);
-         c3.hide();
-      }
+        oldcontrol c2 = c;
+        c2.show();
 
-      {
-         control c;
-         c.resize(100, 20);
-         c.set_text("sample");
-         c.hide();
+        oldcontrol c3 = std::move(c2);
+        c3.hide();
+    }
 
-         control c2 = std::move(c);
-         c2.show();
-      }
+    {
+        control c;
+        c.resize(100, 20);
+        c.set_text("sample");
+        c.hide();
 
-      {
-         control_copyable c;
-         c.resize(100, 20);
-         c.set_text("sample");
-         c.hide();
+        control c2 = std::move(c);
+        c2.show();
+    }
 
-         control_copyable c2 = c;
-         c2.show();
+    {
+        control_copyable c;
+        c.resize(100, 20);
+        c.set_text("sample");
+        c.hide();
 
-         control_copyable c3 = std::move(c2);
-         c3.hide();
-      }
-   }
+        control_copyable c2 = c;
+        c2.show();
+
+        control_copyable c3 = std::move(c2);
+        c3.hide();
+    }
 }
+} // namespace recipe_10_02
