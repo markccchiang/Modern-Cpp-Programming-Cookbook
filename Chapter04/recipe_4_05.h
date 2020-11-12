@@ -52,7 +52,7 @@ constexpr byte32 operator""_b32() {
 }
 }
 }
-#endif CONSTEXPR_IF_AVAILABLE
+#endif // CONSTEXPR_IF_AVAILABLE
 
 void execute() {
 #ifdef CONSTEXPR_IF_AVAILABLE

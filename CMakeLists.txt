@@ -2,14 +2,16 @@ cmake_minimum_required(VERSION 3.5)
 
 project(Modern-Cpp-Programming-Cookbook LANGUAGES CXX C)
 
+link_directories(/usr/local/lib)
+
 find_package(Boost REQUIRED)
 
 if (Boost_FOUND)
+    message(STATUS "Boost found.")
     include_directories(${Boost_INCLUDE_DIRS})
     link_directories(${Boost_LIBRARY_DIRS})
     message(STATUS "boost include dir: ${Boost_INCLUDE_DIRS}")
     message(STATUS "boost lib dir: ${Boost_LIBRARY_DIRS}")
-    link_directories(/usr/local/lib)
 endif ()
 
 find_package(Catch2 REQUIRED)
