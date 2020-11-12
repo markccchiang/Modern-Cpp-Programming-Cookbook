@@ -12,6 +12,12 @@ if (Boost_FOUND)
     link_directories(/usr/local/lib)
 endif ()
 
+find_package(Catch2 REQUIRED)
+
+if (Catch2_FOUND)
+    message(STATUS "Catch2 found.")
+endif ()
+
 add_subdirectory(Chapter01)
 add_subdirectory(Chapter02)
 add_subdirectory(Chapter03)
@@ -31,6 +37,9 @@ add_subdirectory(Chapter11/chapter11bt_03)
 add_subdirectory(Chapter11/chapter11bt_04)
 add_subdirectory(Chapter11/chapter11bt_05)
 
-
+add_subdirectory(Chapter11/chapter11ca_01)
+add_subdirectory(Chapter11/chapter11ca_02)
+add_subdirectory(Chapter11/chapter11ca_03)
+add_subdirectory(Chapter11/chapter11ca_04)
 
 
