@@ -18,6 +18,12 @@ if (Catch2_FOUND)
     message(STATUS "Catch2 found.")
 endif ()
 
+find_package(GTest REQUIRED)
+
+if (GTest_FOUND)
+    message(STATUS "GTest found.")
+endif ()
+
 add_subdirectory(Chapter01)
 add_subdirectory(Chapter02)
 add_subdirectory(Chapter03)
@@ -42,4 +48,8 @@ add_subdirectory(Chapter11/chapter11ca_02)
 add_subdirectory(Chapter11/chapter11ca_03)
 add_subdirectory(Chapter11/chapter11ca_04)
 
-
+add_subdirectory(Chapter11/chapter11gt_01)
+add_subdirectory(Chapter11/chapter11gt_02)
+add_subdirectory(Chapter11/chapter11gt_03)
+add_subdirectory(Chapter11/chapter11gt_04)
+add_subdirectory(Chapter11/chapter11gt_05)
